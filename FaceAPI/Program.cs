@@ -24,11 +24,13 @@ using static System.Net.WebRequestMethods;
 Log.Logger = new LoggerConfiguration().MinimumLevel.Information()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Warning).
     MinimumLevel.Override("System", LogEventLevel.Warning)
+     .MinimumLevel.Override("Microsoft.AspNetCore.Diagnostics", LogEventLevel.Fatal) // πÿº¸…Ë÷√
     .WriteTo.Console().
     WriteTo.File("LogFile/webapi-.log", 
     rollingInterval: RollingInterval.Day,
     retainedFileCountLimit:7,
-    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}"
+    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}"
+    //{ Exception}
     ).
     CreateLogger();
 

@@ -1,0 +1,14 @@
+﻿<Window x:Class="Face.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:Ext="clr-namespace:Face.Extensions"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="540" Width="960" >
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image/背景.png"/>
+        </Grid.Background>
+        <ContentControl prism:RegionManager.RegionName="{x:Static Ext:PrismManager.MainWindowRegionName}"/>
+    </Grid>
+</Window>
