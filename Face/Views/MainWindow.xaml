@@ -4,11 +4,42 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:Ext="clr-namespace:Face.Extensions"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="540" Width="960" >
+        Title="{Binding Title}"    
+        Style="{StaticResource MaterialDesignWindow}"
+         TextElement.FontSize="33"
+        TextElement.Foreground="Black"
+        Height="1080" Width="1920" >
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Image/背景.png"/>
         </Grid.Background>
-        <ContentControl prism:RegionManager.RegionName="{x:Static Ext:PrismManager.MainWindowRegionName}"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Height="80" Width="260" Source="/Image/深航logo.png" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="66,54,0,0"/>
+            <Image Grid.Column="1" Height="136" Width="600" Source="/Image/名称-1.png" HorizontalAlignment="Center" VerticalAlignment="Top"
+Margin="0,66,0,0"/>
+            <TextBlock Grid.Column="2" Text="2023-02-02 12:32:32" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,38,0"/>
+        </Grid>
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static Ext:PrismManager.MainWindowRegionName}"/>
+
+        <StackPanel Grid.Row="2"  Orientation="Horizontal"  Margin="10" HorizontalAlignment="Center">
+            <TextBlock Text="本机编号："/>
+            <TextBlock Text="本机编号："/>
+            <TextBlock Text="本机编号："/>
+            <TextBlock Text="本机编号："/>
+            <TextBlock Text="本机编号："/>
+            <TextBlock Text="本机编号："/>
+        </StackPanel>
+
     </Grid>
 </Window>

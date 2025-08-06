@@ -1,6 +1,7 @@
 
 #region 1.创建WebApplication构建器
 using FaceAPI.Configure;
+using FaceAPI.Extensions;
 using FaceAPI.Middlewares;
 using Serilog;
 using Serilog.Events;
@@ -56,13 +57,18 @@ try
     #endregion
 
     builder.Register();
-
+    builder.Services.AddAutoMapper(assembly => assembly.AddMaps(typeof(AutoMapperProfile).Assembly));
 
     //3.构建应用程序
     var app = builder.Build();      //使用之前配置的服务构建WebApplication实例
 
     app.UseMiddleware<ExceptionMiddlewareSerilog>();    //使用Serilog日志中间件
 
+    using(var scope = app.Services.CreateScope())
+    {
+        var migrationService=scope.ServiceProvider.GetRequiredService<DatabaseMigrationService>();
+        migrationService.Migrate();
+    }
     // 4. 配置HTTP请求管道
     //if (app.Environment.IsDevelopment())
     {
