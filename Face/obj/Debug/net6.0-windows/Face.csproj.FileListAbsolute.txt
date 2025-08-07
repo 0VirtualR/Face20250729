@@ -33,3 +33,6 @@ E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Face_MarkupCompile.lref
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\App.baml
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\IndexView.g.cs
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\IndexView.baml
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\LoginView.g.cs
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\LoginView.baml
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs

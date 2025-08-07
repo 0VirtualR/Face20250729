@@ -20,6 +20,7 @@ namespace Face
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>();
+            containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
         }
         protected override void OnInitialized()
         {

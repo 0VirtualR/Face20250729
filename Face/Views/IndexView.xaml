@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Face.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="770" d:DesignWidth="1920">
     <Grid Background="Transparent">
@@ -11,22 +12,45 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Image Source="/Image/流程图.png" Width="1560" Height="500"/>
+        <Image Source="/Image/流程图.png" Margin="0,69,0,0" Width="1560" Height="500"/>
         <DockPanel Grid.Row="1">
-            <StackPanel  Margin="43,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Vertical">
-                <Button Width="78" Height="78" >
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Image/菜单2.png"/>
-                    </Button.Background>
-                </Button>
-                <TextBlock Text="菜单" Width="78"/>
-            </StackPanel>
-         
+            <Button VerticalAlignment="Bottom" Margin="43,0,0,-22"  Width="78" Height="auto" >
+                <Button.Style>
+                    <Style TargetType="Button" >
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border RenderTransformOrigin="0.5,0.5" Name="border" Background="{TemplateBinding Background}">
+                                        <StackPanel >
+                                            <Image Source="/Image/菜单2.png"/>
+                                            <TextBlock Text="菜单" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Opacity" Value="0.8"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="border" Property="RenderTransform">
+                                                <Setter.Value>
+                                                    <ScaleTransform ScaleX="1.05"  ScaleY="1.05"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <StackPanel Margin="95,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Button Content="出勤" Height="60" Width="140"/>
                 <Button Margin="0,42,0,0" Content="退勤" Height="60" Width="140"/>
             </StackPanel>
-            <Button  HorizontalAlignment="Left" Margin="104,0,0,0" Height="216" Width="260">
+            <Button Command="{Binding NavigateCommand}" CommandParameter="LoginView" HorizontalAlignment="Left" Margin="104,0,0,0" Height="216" Width="260">
                 <Button.Background>
                     <ImageBrush ImageSource="/Image/人脸采集.png"/>
                 </Button.Background>

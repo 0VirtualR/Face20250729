@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Face.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Face.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:ext="clr-namespace:Face.Extensions"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="770" d:DesignWidth="1920">
+  
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Command="{Binding NavigateCommand}" CommandParameter="IndexView" Content="返回" Background="Red" Width="100"  FontSize="18" Height="46" Margin="0,0,37,0"  HorizontalAlignment="Right"/>
+        <TextBlock Grid.Row="1" FontFamily="SourceHanSansCN-Bold" Foreground="White" FontSize="31px"  Margin="376,0,0,21" Text="输入密码"/>
+        <Border Background="White" CornerRadius="10"   VerticalAlignment="Top" Width="1126" Height="599"  Grid.Row="2"  >
+            <StackPanel HorizontalAlignment="Center">
+
+                <TextBlock Text="请输入密码" FontSize="26px" HorizontalAlignment="Center" Margin="80"/>
+                <TextBox materialDesign:HintAssist.Hint="请输入账号" Text="22" FontSize="44" Foreground="Black"/>
+                <PasswordBox ext:PasswordExtensions.Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,30" FontSize="44" Foreground="Black" materialDesign:HintAssist.Hint="请输入密码">
+                    <i:Interaction.Behaviors>
+                        <ext:PasswordBehavior/>
+                    </i:Interaction.Behaviors>
+                </PasswordBox>
+                <Button Height="60"  FontSize="44" Content="确认"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

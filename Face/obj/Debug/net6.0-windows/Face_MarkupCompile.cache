@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 E:\MyToDo\Face20250729\Face\App.xaml
-2-1675454828
+3-1354557537
 
-7-1456503575
+12-1247729332
 203-231666703
-Views\IndexView.xaml;Views\MainWindow.xaml;
+Views\IndexView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;
 
 False
 
