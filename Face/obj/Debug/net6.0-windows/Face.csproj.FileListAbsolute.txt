@@ -11,7 +11,6 @@ E:\MyToDo\Face20250729\Face\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 E:\MyToDo\Face20250729\Face\bin\Debug\net6.0-windows\Prism.dll
 E:\MyToDo\Face20250729\Face\bin\Debug\net6.0-windows\Prism.DryIoc.Wpf.dll
 E:\MyToDo\Face20250729\Face\bin\Debug\net6.0-windows\Prism.Wpf.dll
-E:\MyToDo\Face20250729\Face\bin\Debug\net6.0-windows\RestSharp.dll
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Face.csproj.AssemblyReference.cache
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\MainWindow.baml
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\MainWindow.g.cs
@@ -36,3 +35,5 @@ E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\IndexView.baml
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\LoginView.g.cs
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\LoginView.baml
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\MyToDo\Face20250729\Face\bin\Debug\net6.0-windows\Shared.dll
+E:\MyToDo\Face20250729\Face\bin\Debug\net6.0-windows\Shared.pdb

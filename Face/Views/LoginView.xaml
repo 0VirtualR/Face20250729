@@ -22,13 +22,13 @@
             <StackPanel HorizontalAlignment="Center">
 
                 <TextBlock Text="请输入密码" FontSize="26px" HorizontalAlignment="Center" Margin="80"/>
-                <TextBox materialDesign:HintAssist.Hint="请输入账号" Text="22" FontSize="44" Foreground="Black"/>
+                <TextBox materialDesign:HintAssist.Hint="请输入账号" Text="{Binding Username}" FontSize="44" Foreground="Black"/>
                 <PasswordBox ext:PasswordExtensions.Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,30" FontSize="44" Foreground="Black" materialDesign:HintAssist.Hint="请输入密码">
                     <i:Interaction.Behaviors>
                         <ext:PasswordBehavior/>
                     </i:Interaction.Behaviors>
                 </PasswordBox>
-                <Button Height="60"  FontSize="44" Content="确认"/>
+                <Button Height="60"  FontSize="44" Content="确认" Command="{Binding ExecuteCommand}" CommandParameter="登录"/>
             </StackPanel>
         </Border>
     </Grid>

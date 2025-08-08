@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Shared
 {
+    public class ApiResponse<T>
+    {
+        public string Msg { get; set; }
+
+        public bool Status { get; set; }
+
+        public T Result { get; set; }
+    }
     public class ApiResponse
     {
+        public ApiResponse() { }
         public ApiResponse(bool status, object result)
         {
 

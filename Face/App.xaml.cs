@@ -1,8 +1,12 @@
 ﻿using Face.Common;
+using Face.Interface;
+using Face.Service;
 using Face.ViewModels;
 using Face.Views;
 using Prism.DryIoc;
 using Prism.Ioc;
+using System;
+using System.Net.Http;
 using System.Windows;
 
 namespace Face
@@ -19,6 +23,19 @@ namespace Face
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterSingleton<HttpClient>(() =>
+            {
+                var client = new HttpClient()
+                {
+                    //BaseAddress = new System.Uri("http://localhost:7266/"),
+                    BaseAddress = new System.Uri(@"http://localhost:7266/"),
+                    Timeout = TimeSpan.FromSeconds(30)
+                };
+                return client;
+            });
+            containerRegistry.Register<ILoginService,LoginService>();
+            containerRegistry.Register<IApiService, ApiService>();
+
             containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>();
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
         }

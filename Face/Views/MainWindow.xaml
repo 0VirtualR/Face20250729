@@ -31,7 +31,7 @@
             <Image Grid.Column="0" Height="80" Width="260" Source="/Image/深航logo.png" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="66,54,0,0"/>
             <Image Visibility="{Binding IsDisplayImg ,Converter={StaticResource BoolToVisility}}" Grid.Column="1" Width="600" Source="/Image/名称-1.png" HorizontalAlignment="Center"
 Margin="0,66,0,-68"/>
-            <TextBlock Grid.Column="2" Text="2023-02-02 12:32:32" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,38,0"/>
+            <TextBlock Grid.Column="2" Foreground="White" Text="{Binding DisplayTime}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,54,38,0"/>
         </Grid>
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static Ext:PrismManager.MainWindowRegionName}"/>
 

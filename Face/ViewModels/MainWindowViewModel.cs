@@ -3,11 +3,24 @@ using Face.Extensions;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
+using System;
+using System.Windows.Threading;
 
 namespace Face.ViewModels
 {
     public class MainWindowViewModel : BindableBase,IConfigService
     {
+        private string displayTime;
+
+        public string DisplayTime
+        {
+            get { return displayTime; }
+            set { displayTime = value;RaisePropertyChanged(); }
+        }
+        private void UpdateTime()
+        {
+            DisplayTime = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+        }
         private string _title = "Prism Application";
         private readonly IRegionManager regionManager;
 
@@ -33,7 +46,14 @@ namespace Face.ViewModels
             {
                 IsDisplayImg = arg.IsDisplay;
             });
-
+            //显示时间
+            UpdateTime();
+            var timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            timer.Tick += (s, e) => UpdateTime();
+            timer.Start();
         }
 
         public void Configure()

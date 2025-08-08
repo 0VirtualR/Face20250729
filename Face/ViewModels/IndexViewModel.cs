@@ -27,19 +27,32 @@ namespace Face.ViewModels
 
         private void Navigate(string viewname)
         {
-            regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate(viewname, NavigateResult =>
+            try
             {
-                if (NavigateResult.Result == true)
+                regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate(viewname, NavigateResult =>
                 {
-                    if (viewname == "LoginView")
+                    if (NavigateResult.Result == true)
                     {
-                        aggregator.PublishMainWindowEvent(new Events.DisplayImg()
+                        if (viewname == "LoginView")
                         {
-                            IsDisplay = false
-                        });
+                            aggregator.PublishMainWindowEvent(new Events.DisplayImg()
+                            {
+                                IsDisplay = false
+                            });
+                        }
+
                     }
-                }
-            });
+                    else
+                    {
+                        string s = NavigateResult.Error?.Message;
+                        string ss = NavigateResult.Error.ToString();
+                    }
+                });
+            }
+        catch(Exception ex)
+            {
+                
+            }
         }
     }
 }
