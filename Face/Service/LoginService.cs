@@ -32,7 +32,9 @@ namespace Face.Service
             request.Parameter = new UserDto()
             {
                 Username = username,
-                Password = password
+                Password = password,
+                Account = username,
+                Token = "fds"
             };
          return   await apiService.SendAsync( request );
 

@@ -1,0 +1,78 @@
+Oracle登录ERROR: ORA-01031 insufficient privileges解决办法
+
+源码小哥
+
+于 2024-12-18 12:05:02 发布
+
+阅读量2.4k
+ 收藏 4
+
+点赞数4
+CC 4.0 BY-SA版权
+分类专栏： 面试题 文章标签： oracle 数据库 01031 缺少权限 解决办法
+
+2048 AI社区
+文章已被社区收录
+加入社区
+
+面试题
+专栏收录该内容
+69 篇文章
+订阅专栏
+1.情况
+1.环境：
+
+ - 操作系统版本：64位win11
+ - Oracle版本：64位 oracle 11g
+AI写代码
+shell
+1
+2
+解决方法：
+利用DOS命令添加系统用户到ora_dba用户组
+
+
+2.查看用户组
+
+net localgroup  –查看用户组；
+AI写代码
+shell
+1
+
+3.查看ora_dba用户组下的具体用户：
+
+net localgroup ora_dba;
+AI写代码
+shell
+1
+
+4.添加本机管理员用户到ora_dba用户组下：
+
+net localgroup ora_dba administrator /add;
+AI写代码
+shell
+1
+
+
+(这边cmd请用管理员身份运行，net user可以查看有哪些用户，administrator可以换成其他你正在登录系统的用户)
+
+2.总结
+1，查询ora_dba分组是否包含了当前登录用户
+
+cmd------->net localgroup ora_dba   好吧，肯定是没有当前登录用户的
+net localgroup ora_dba administrator /add   把管理员添加进ora_dba分组
+AI写代码
+c
+运行
+1
+2
+(这边cmd请用管理员身份运行，net user可以查看有哪些用户，administrator可以换成其他你正在登录系统的用户)
+
+2，检查oracle安装目录找到sqlnet.ora文件：检查SQLNET.AUTHENTICATION_SERVICES= (NTS)，括号里面一定要是NTS，如果是NONE请改为NTS，具体原理是判断oracle用系统管理员登录是否需要验证密码文件，具体原理不深究
+
+3，sys，system登录吧，如果还是密码不正确就用nolog登录，再修改sys和system的密码
+————————————————
+
+                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+                        
+原文链接：https://blog.csdn.net/BruceLiu_code/article/details/144557901

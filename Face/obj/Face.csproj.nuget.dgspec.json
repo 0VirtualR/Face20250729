@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\MyToDo\\Face20250729\\Face\\Face.csproj": {}
+    "E:\\SourceTree_Project\\Face20250729\\Face\\Face.csproj": {}
   },
   "projects": {
-    "E:\\MyToDo\\Face20250729\\Face\\Face.csproj": {
+    "E:\\SourceTree_Project\\Face20250729\\Face\\Face.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\MyToDo\\Face20250729\\Face\\Face.csproj",
+        "projectUniqueName": "E:\\SourceTree_Project\\Face20250729\\Face\\Face.csproj",
         "projectName": "Face",
-        "projectPath": "E:\\MyToDo\\Face20250729\\Face\\Face.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\MyToDo\\Face20250729\\Face\\obj\\",
+        "projectPath": "E:\\SourceTree_Project\\Face20250729\\Face\\Face.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\SourceTree_Project\\Face20250729\\Face\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Software\\VS2022\\Shared\\NuGetPackages"
+          "D:\\Software\\VisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "E:\\MyToDo\\Face20250729\\Shared\\Shared.csproj": {
-                "projectPath": "E:\\MyToDo\\Face20250729\\Shared\\Shared.csproj"
+              "E:\\SourceTree_Project\\Face20250729\\Shared\\Shared.csproj": {
+                "projectPath": "E:\\SourceTree_Project\\Face20250729\\Shared\\Shared.csproj"
               }
             }
           }
@@ -48,7 +49,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net6.0-windows7.0": {
@@ -86,24 +87,24 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\MyToDo\\Face20250729\\Shared\\Shared.csproj": {
+    "E:\\SourceTree_Project\\Face20250729\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\MyToDo\\Face20250729\\Shared\\Shared.csproj",
+        "projectUniqueName": "E:\\SourceTree_Project\\Face20250729\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "E:\\MyToDo\\Face20250729\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\MyToDo\\Face20250729\\Shared\\obj\\",
+        "projectPath": "E:\\SourceTree_Project\\Face20250729\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\SourceTree_Project\\Face20250729\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Software\\VS2022\\Shared\\NuGetPackages"
+          "D:\\Software\\VisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -112,6 +113,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -130,7 +132,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net6.0": {
@@ -151,7 +153,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
