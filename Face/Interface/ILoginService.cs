@@ -10,6 +10,7 @@ namespace Face.Interface
     public interface ILoginService
     {
         public Task<ApiResponse> Login(string username, string password);
+ 
         public Task<ApiResponse> Register(UserDto userDto);
     }
 }

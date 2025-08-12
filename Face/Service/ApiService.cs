@@ -1,4 +1,5 @@
-﻿using Face.Interface;
+﻿using Face.Common.Converter;
+using Face.Interface;
 using Face.Models;
 using Shared;
 using System;
@@ -9,6 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Face.Service
@@ -40,13 +42,16 @@ namespace Face.Service
 
             if(result.IsSuccessStatusCode)
             {
-                var content = await result.Content.ReadAsStringAsync();
-                var data = JsonSerializer.Deserialize<object>(content);
-                return new ApiResponse()
+                var options = new JsonSerializerOptions
                 {
-                    Status = true,
-                    Result = data
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase, // 匹配驼峰字段
+                    PropertyNameCaseInsensitive = true,              // 忽略大小写
+                    IncludeFields = true,                           // 包含字段
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString
                 };
+                var content = await result.Content.ReadAsStringAsync();
+                var data = JsonSerializer.Deserialize<ApiResponse>(content, options);
+                return data;
             }
             else
             {
@@ -91,9 +96,17 @@ namespace Face.Service
                 // 5. 处理响应
                 if (response.IsSuccessStatusCode)
                 {
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase, // 匹配驼峰字段
+                        PropertyNameCaseInsensitive = true,              // 忽略大小写
+                        IncludeFields = true,                           // 包含字段
+                        NumberHandling = JsonNumberHandling.AllowReadingFromString,
+                        Converters = { new CustomDateTimeConverter() }
+                    };
                     var content = await response.Content.ReadAsStringAsync();
-                    var data = JsonSerializer.Deserialize<T>(content);
-                    return new ApiResponse<T> { Status = true, Result = data };
+                    var data = JsonSerializer.Deserialize<ApiResponse<T>>(content, options);
+                    return data;
                 }
                 else
                 {

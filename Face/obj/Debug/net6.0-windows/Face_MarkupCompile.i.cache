@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\SourceTree_Project\Face20250729\Face\obj\Debug\net6.0-windows\
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\
 Face
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-E:\SourceTree_Project\Face20250729\Face\App.xaml
-3-1354557537
+E:\MyToDo\Face20250729\Face\App.xaml
+41105395951
 
-191499038508
-2032024824302
-Views\IndexView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;
+25-2122439572
+203-1151884486
+Views\FaceView.xaml;Views\IndexView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;
 
-False
+True
 

@@ -52,14 +52,15 @@ namespace Face
 
                 return client;
             });
-         
 
 
+            containerRegistry.Register<IFaceService, FaceService>();
             containerRegistry.Register<ILoginService,LoginService>();
             containerRegistry.Register<IApiService, ApiService>();
 
             containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>();
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<FaceView, FaceViewModel>();
         }
         protected override void OnInitialized()
         {

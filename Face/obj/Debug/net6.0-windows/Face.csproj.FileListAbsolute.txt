@@ -76,3 +76,5 @@ E:\SourceTree_Project\Face20250729\Face\obj\Debug\net6.0-windows\refint\Face.dll
 E:\SourceTree_Project\Face20250729\Face\obj\Debug\net6.0-windows\Face.pdb
 E:\SourceTree_Project\Face20250729\Face\obj\Debug\net6.0-windows\Face.genruntimeconfig.cache
 E:\SourceTree_Project\Face20250729\Face\obj\Debug\net6.0-windows\ref\Face.dll
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\FaceView.g.cs
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\FaceView.baml

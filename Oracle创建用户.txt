@@ -1,0 +1,36 @@
+-- 1. 创建表空间（推荐用于生产环境）
+CREATE TABLESPACE TODODATA
+DATAFILE 'tododata01.dbf' SIZE 100M 
+AUTOEXTEND ON NEXT 50M 
+MAXSIZE UNLIMITED
+EXTENT MANAGEMENT LOCAL 
+SEGMENT SPACE MANAGEMENT AUTO;
+
+-- 2. 创建应用程序用户
+CREATE USER todo IDENTIFIED BY todo  -- 替换为强密码
+DEFAULT TABLESPACE TODODATA
+TEMPORARY TABLESPACE TEMP
+QUOTA UNLIMITED ON TODODATA
+ACCOUNT UNLOCK;
+
+-- 3. 授予基本权限（EF Core必需）
+GRANT CREATE SESSION TO todo;       -- 连接权限
+GRANT CREATE TABLE TO todo;         -- 创建表
+GRANT CREATE SEQUENCE TO todo;      -- 序列（自增ID必需）
+GRANT CREATE PROCEDURE TO todo;     -- 存储过程
+GRANT CREATE TRIGGER TO todo;       -- 触发器
+GRANT CREATE VIEW TO todo;          -- 视图
+
+-- 4. 授予对象操作权限（针对自身对象）
+-- 注意：用户自动拥有自己对象的完整权限，只需授予修改和删除能力
+GRANT ALTER ANY TABLE TO todo;      -- 修改表结构
+GRANT DROP ANY TABLE TO todo;       -- 删除表（开发环境可用）
+
+-- 5. 授予序列操作权限
+GRANT SELECT ANY SEQUENCE TO todo;  -- 查询序列
+GRANT ALTER ANY SEQUENCE TO todo;   -- 修改序列
+
+-- 6. 授予表空间权限
+GRANT UNLIMITED TABLESPACE TO todo; -- 使用表空间
+
+commit;

@@ -1,0 +1,107 @@
+2025-08-11 08:36:46 [Information] Starting web host...
+2025-08-11 08:36:52 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 08:39:25 [Information] Starting web host...
+2025-08-11 08:39:29 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 08:42:21 [Information] Starting web host...
+2025-08-11 08:42:25 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 08:54:03 [Information] Starting web host...
+2025-08-11 08:54:07 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 08:55:39 [Information] Starting web host...
+2025-08-11 08:55:43 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 10:54:47 [Information] Starting web host...
+2025-08-11 10:54:51 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 11:07:54 [Information] Starting web host...
+2025-08-11 11:07:58 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 11:18:28 [Information] Starting web host...
+2025-08-11 11:18:31 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 11:42:17 [Information] Starting web host...
+2025-08-11 11:42:21 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 11:48:14 [Information] Starting web host...
+2025-08-11 11:48:17 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 13:43:13 [Information] Starting web host...
+2025-08-11 14:14:39 [Information] Starting web host...
+2025-08-11 14:17:53 [Information] Starting web host...
+2025-08-11 14:18:57 [Information] Starting web host...
+2025-08-11 14:48:05 [Information] Starting web host...
+2025-08-11 14:57:00 [Information] Starting web host...
+2025-08-11 15:03:52 [Information] Starting web host...
+2025-08-11 15:14:38 [Information] Starting web host...
+2025-08-11 15:31:12 [Information] Starting web host...
+2025-08-11 16:06:02 [Information] Starting web host...
+2025-08-11 17:24:48 [Information] Starting web host...
+2025-08-11 17:30:08 [Information] Starting web host...
+2025-08-11 17:30:19 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 17:30:45 [Error] [2025-08-11 17:30:45.053] 异常报告
+请求ID: "8000010b-0001-ec00-b63f-84710c7967bb"
+路径: "/api/Face/Add"
+方法: ".lambda_method398"
+类型: "AutoMapper.AutoMapperMappingException"
+信息: "Missing type map configuration or unsupported mapping.
+
+Mapping types:
+FaceDto -> T_FACE
+Shared.FaceDto -> FaceAPI.Model.SugarEntity.T_FACE"
+堆栈跟踪:
+"   at lambda_method398(Closure , Object , T_FACE , ResolutionContext )
+   at FaceAPI.Service.FaceService.AddAsync(FaceDto faceDto) in E:\MyToDo\Face20250729\FaceAPI\Service\FaceService.cs:line 22
+   at lambda_method381(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at FaceAPI.Middlewares.ExceptionMiddlewareSerilog.InvokeAsync(HttpContext context) in E:\MyToDo\Face20250729\FaceAPI\Middleware\ExceptionMiddlewareSerilog.cs:line 23"
+================================================================================
+
+2025-08-11 17:33:22 [Error] [2025-08-11 17:33:22.852] 异常报告
+请求ID: "80000005-0000-f800-b63f-84710c7967bb"
+路径: "/api/Face/Add"
+方法: ".lambda_method398"
+类型: "AutoMapper.AutoMapperMappingException"
+信息: "Missing type map configuration or unsupported mapping.
+
+Mapping types:
+FaceDto -> T_FACE
+Shared.FaceDto -> FaceAPI.Model.SugarEntity.T_FACE"
+堆栈跟踪:
+"   at lambda_method398(Closure , Object , T_FACE , ResolutionContext )
+   at FaceAPI.Service.FaceService.AddAsync(FaceDto faceDto) in E:\MyToDo\Face20250729\FaceAPI\Service\FaceService.cs:line 22
+   at lambda_method381(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at FaceAPI.Middlewares.ExceptionMiddlewareSerilog.InvokeAsync(HttpContext context) in E:\MyToDo\Face20250729\FaceAPI\Middleware\ExceptionMiddlewareSerilog.cs:line 23"
+================================================================================
+
+2025-08-11 18:52:44 [Information] Starting web host...
+2025-08-11 18:52:55 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 18:58:37 [Information] Starting web host...
+2025-08-11 18:58:49 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+2025-08-11 19:13:50 [Information] Starting web host...
+2025-08-11 19:13:53 [Fatal] Host terminated unexpectedly!
+2025-08-11 19:14:06 [Information] Starting web host...
+2025-08-11 19:14:09 [Fatal] Host terminated unexpectedly!
+2025-08-11 19:17:55 [Information] Starting web host...
+2025-08-11 19:18:04 [Warning] You do not have a valid license key for the Lucky Penny software AutoMapper. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.

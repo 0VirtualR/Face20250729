@@ -1,6 +1,7 @@
 ﻿using Face.Extensions;
 using Face.Interface;
 using Face.Service;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -52,18 +53,28 @@ namespace Face.ViewModels
 
         private async Task Login()
         {
-            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
-                return;
-            var res =await loginService.Login(Username, Password);
-            if(res!=null&& res.Status)
+            //if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+            //    return;
+            //var res =await loginService.Login(Username, Password);
+            //if(res!=null&& res.Status)
             {
+
+                Navigate("FaceView");
+
 
             }
         }
 
         private void Navigate(string obj)
         {
-            regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate(obj);
+            try
+            {
+                regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate(obj);
+            }
+           catch(Exception ex)
+            {
+
+            }
         }
     }
 }

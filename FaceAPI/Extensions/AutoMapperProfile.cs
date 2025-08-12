@@ -9,6 +9,7 @@ namespace FaceAPI.Extensions
        public AutoMapperProfile()
         {
             CreateMap<T_USER, UserDto>().ReverseMap();
+            CreateMap<T_FACE, FaceDto>().ReverseMap();
         }
     }
 }

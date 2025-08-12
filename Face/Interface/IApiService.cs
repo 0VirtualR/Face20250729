@@ -12,5 +12,6 @@ namespace Face.Interface
     {
      
       public  Task<ApiResponse> SendAsync(BaseRequest request);
+      public  Task<ApiResponse<T>> SendAsync<T>(BaseRequest request);
     }
 }

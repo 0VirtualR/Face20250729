@@ -58,7 +58,8 @@ namespace Face.ViewModels
 
         public void Configure()
         {
-            regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate("IndexView");
+            regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate("FaceView");
+            //regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate("IndexView");
         }
     }
 }

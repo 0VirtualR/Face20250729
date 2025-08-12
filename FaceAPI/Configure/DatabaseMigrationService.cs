@@ -15,6 +15,7 @@ namespace FaceAPI.Configure
         {
             client.DbMaintenance.CreateDatabase();
             client.CodeFirst.InitTables(typeof(T_USER));  
+            client.CodeFirst.InitTables(typeof(T_FACE));  
         }
     }
 }
