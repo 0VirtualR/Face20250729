@@ -1,10 +1,10 @@
-﻿using Shared;
+﻿using MyToDo.Shared.Contact;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using X.PagedList;
 
 namespace Face.Interface
 {
@@ -14,7 +14,7 @@ namespace Face.Interface
         Task<ApiResponse<T>> UpdateAsync(T entity);
         Task<ApiResponse> DeleteAsync(int id);
         Task<ApiResponse<T>> GetFirstOrDefaultAsync(int id);
-        //Task<ApiResponse<PagedList<T>>> GetAllAsync()
+        Task<ApiResponse<PagedList<T>>> GetAllAsync(QueryParameter query);
 
     }
 }

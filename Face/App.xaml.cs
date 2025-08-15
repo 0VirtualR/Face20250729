@@ -2,7 +2,9 @@
 using Face.Interface;
 using Face.Service;
 using Face.ViewModels;
+using Face.ViewModels.Dialog;
 using Face.Views;
+using Face.Views.Dialog;
 using Prism.DryIoc;
 using Prism.Ioc;
 using System;
@@ -53,11 +55,14 @@ namespace Face
                 return client;
             });
 
+            containerRegistry.RegisterDialog<AddFaceView, AddFaceViewModel>();
 
+            containerRegistry.Register<IDialogHostService, DialogHostService>();
             containerRegistry.Register<IFaceService, FaceService>();
             containerRegistry.Register<ILoginService,LoginService>();
             containerRegistry.Register<IApiService, ApiService>();
 
+            containerRegistry.RegisterForNavigation<MsgView, MsgViewModel>();
             containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>();
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
             containerRegistry.RegisterForNavigation<FaceView, FaceViewModel>();

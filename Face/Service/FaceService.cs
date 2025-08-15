@@ -11,23 +11,12 @@ using System.Threading.Tasks;
 
 namespace Face.Service
 {
-    public class FaceService : IFaceService
+    public class FaceService :BaseService<FaceDto>, IFaceService
     {
         private readonly IApiService apiService;
-        private readonly string serviceName="Face";
 
-        public FaceService(IApiService apiService)
+        public FaceService( IApiService apiService) : base("Face", apiService)
         {
-            this.apiService = apiService;
-        }
-
- 
-        public async Task<ApiResponse<PagedList<FaceDto>>> GetAll(QueryParameter query)
-        {
-            BaseRequest baseRequest = new BaseRequest();
-            baseRequest.Method = HttpMethod.Get;
-            baseRequest.Rounte = $"api/{serviceName}/GetAll?&PageSize={query.PageSize}"+$"&PageIndex={query.PageIndex}"+$"&Search={query.Search}";
-            return await apiService.SendAsync<PagedList<FaceDto>>(baseRequest);
         }
     }
 }

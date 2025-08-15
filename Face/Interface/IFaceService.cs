@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Face.Interface
 {
-    public interface IFaceService
+    public interface IFaceService:IBaseService<FaceDto>
     {
-       public Task<ApiResponse<PagedList<FaceDto>>> GetAll(QueryParameter query);
+  
     }
 }

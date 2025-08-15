@@ -78,3 +78,7 @@ E:\SourceTree_Project\Face20250729\Face\obj\Debug\net6.0-windows\Face.genruntime
 E:\SourceTree_Project\Face20250729\Face\obj\Debug\net6.0-windows\ref\Face.dll
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\FaceView.g.cs
 E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\FaceView.baml
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\Dialog\AddFaceView.g.cs
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\Dialog\AddFaceView.baml
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\Dialog\MsgView.g.cs
+E:\MyToDo\Face20250729\Face\obj\Debug\net6.0-windows\Views\Dialog\MsgView.baml

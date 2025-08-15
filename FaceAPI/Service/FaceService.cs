@@ -81,7 +81,7 @@ namespace FaceAPI.Service
             var res = await client.Storageable(dbface).ExecuteCommandAsync();
             if (res > 0)
             {
-                return new ApiResponse(true, res);
+                return new ApiResponse(true, dbface);
             }
             return new ApiResponse("插入数据失败");
         }

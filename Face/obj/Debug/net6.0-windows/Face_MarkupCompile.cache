@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 E:\MyToDo\Face20250729\Face\App.xaml
-41105395951
+61895908095
 
-23784291872
+33-1681632067
 203-1151884486
-Views\FaceView.xaml;Views\IndexView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;
+Views\Dialog\AddFaceView.xaml;Views\Dialog\MsgView.xaml;Views\FaceView.xaml;Views\IndexView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;
 
 False
 
