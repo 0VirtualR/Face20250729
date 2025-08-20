@@ -1,0 +1,27 @@
+﻿<Window x:Class="Test3.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+         Title="Camera App" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 控制按钮 -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="启动摄像头" Command="{Binding StartCameraCommand}" 
+                    Margin="5" Width="100" Height="30"/>
+            <Button Content="停止摄像头" Command="{Binding StopCameraCommand}" 
+                    Margin="5" Width="100" Height="30"/>
+            <Button Content="拍照" Command="{Binding CaptureCommand}" 
+                    Margin="5" Width="100" Height="30"/>
+        </StackPanel>
+
+        <!-- 视频显示区域 -->
+        <Image Grid.Row="1" Source="{Binding CameraImage}" 
+               Stretch="Uniform" Margin="10"/>
+    </Grid>
+</Window>

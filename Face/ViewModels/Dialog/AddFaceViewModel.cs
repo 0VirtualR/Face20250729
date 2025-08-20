@@ -39,7 +39,7 @@ namespace Face.ViewModels.Dialog
             RequestClose?.Invoke(new DialogResult(ButtonResult.No));
         }
 
-        private async void Save()
+        private  void Save()
         {
             if (string.IsNullOrWhiteSpace(CurrentDto.Name) || string.IsNullOrWhiteSpace(CurrentDto.WorkName) || string.IsNullOrWhiteSpace(CurrentDto.WorkId)) return;
             var param = new DialogParameters();

@@ -13,7 +13,7 @@ namespace Face.Service
 {
     public class FaceService :BaseService<FaceDto>, IFaceService
     {
-        private readonly IApiService apiService;
+
 
         public FaceService( IApiService apiService) : base("Face", apiService)
         {

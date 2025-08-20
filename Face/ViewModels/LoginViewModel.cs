@@ -53,10 +53,10 @@ namespace Face.ViewModels
 
         private async Task Login()
         {
-            //if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
-            //    return;
-            //var res =await loginService.Login(Username, Password);
-            //if(res!=null&& res.Status)
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+                return;
+            var res = await loginService.Login(Username, Password);
+            if (res != null && res.Status)
             {
 
                 Navigate("FaceView");
