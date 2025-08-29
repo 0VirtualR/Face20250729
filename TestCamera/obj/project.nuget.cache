@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "Pl7xphH+gu4=",
+  "success": true,
+  "projectFilePath": "E:\\MyToDo\\TestCamera\\TestCamera\\TestCamera.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\accord.video\\3.8.0\\accord.video.3.8.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\accord.video.directshow\\3.8.0\\accord.video.directshow.3.8.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\directshowlib.net\\3.0.0\\directshowlib.net.3.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\dryioc.dll\\4.7.7\\dryioc.dll.4.7.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.win32.systemevents\\9.0.8\\microsoft.win32.systemevents.9.0.8.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\prism.core\\8.1.97\\prism.core.8.1.97.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\prism.dryioc\\8.1.97\\prism.dryioc.8.1.97.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\prism.wpf\\8.1.97\\prism.wpf.8.1.97.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.drawing.common\\9.0.8\\system.drawing.common.9.0.8.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\wpfmediakit\\3.0.1\\wpfmediakit.3.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

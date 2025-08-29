@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+    <PackageReference Include="ViewFaceCore" Version="0.4.0-alpha4" />
+    <PackageReference Include="ViewFaceCore.all_models" Version="6.0.7" />
+    <PackageReference Include="ViewFaceCore.Extension.SkiaSharp" Version="0.4.0-alpha4" />
+    <PackageReference Include="ViewFaceCore.runtime.win.x64" Version="6.0.8-alpha4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+</Project>

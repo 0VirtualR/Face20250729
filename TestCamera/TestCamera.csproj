@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Accord.Video.DirectShow" Version="3.8.0" />
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.8" />
+    <PackageReference Include="WPFMediaKit" Version="3.0.1" />
+  </ItemGroup>
+</Project>

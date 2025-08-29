@@ -1,0 +1,3 @@
+E:\MyToDo\TestCamera\TestCamera\obj\Debug\net6.0-windows7.0\TestCamera.csproj.AssemblyReference.cache
+E:\MyToDo\TestCamera\TestCamera\obj\Debug\net6.0-windows7.0\App.g.cs
+E:\MyToDo\TestCamera\TestCamera\obj\Debug\net6.0-windows7.0\TestCamera_MarkupCompile.cache

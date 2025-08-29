@@ -1,0 +1,10 @@
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Test5.csproj.AssemblyReference.cache
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Views\MainWindow.baml
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Views\MainWindow.g.cs
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\App.g.cs
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Test5_MarkupCompile.cache
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Test5.g.resources
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Test5.GeneratedMSBuildEditorConfig.editorconfig
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Test5.AssemblyInfoInputs.cache
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Test5.AssemblyInfo.cs
+E:\MyToDo\TestCamera\Test5\obj\Debug\net6.0-windows\Test5.csproj.CoreCompileInputs.cache
