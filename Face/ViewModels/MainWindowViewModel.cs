@@ -10,33 +10,28 @@ namespace Face.ViewModels
 {
     public class MainWindowViewModel : BindableBase,IConfigService
     {
+        #region 字段属性
         private string displayTime;
-
         public string DisplayTime
         {
-            get { return displayTime; }
-            set { displayTime = value;RaisePropertyChanged(); }
+            get => displayTime;
+            set =>SetProperty(ref displayTime, value);
         }
-        private void UpdateTime()
-        {
-            DisplayTime = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
-        }
-        private string _title = "Prism Application";
-        private readonly IRegionManager regionManager;
-
+        private string title = "Prism Application";
         public string Title
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get => title;
+            set { SetProperty(ref title, value); }
         }
         private bool isDisplayImg=true;
-
         public bool IsDisplayImg
         {
-            get { return isDisplayImg; }
-            set { isDisplayImg = value;RaisePropertyChanged(); }
+            get => isDisplayImg;
+            set =>SetProperty(ref isDisplayImg, value);
         }
+        #endregion
 
+        private readonly IRegionManager regionManager;
         public MainWindowViewModel(IRegionManager regionManager,IEventAggregator aggregator)
         {
             this.regionManager = regionManager;
@@ -56,10 +51,14 @@ namespace Face.ViewModels
             timer.Start();
         }
 
+        private void UpdateTime()
+        {
+            DisplayTime = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+        }
         public void Configure()
         {
-            regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate("FaceView");
-            //regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate("IndexView");
+            //regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate("FaceView");
+            regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate("IndexView");
         }
     }
 }

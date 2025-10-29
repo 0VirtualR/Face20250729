@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Face.Extensions;
+using Prism.Events;
+using System.Windows;
 
 namespace Face.Views
 {
@@ -7,9 +9,14 @@ namespace Face.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+       
+        public MainWindow(IEventAggregator aggregator)
         {
             InitializeComponent();
+            aggregator.RegisterMessage(arg =>
+            {
+                Snackbar.MessageQueue.Enqueue(arg.Message);
+            },"Login");
         }
     }
 }

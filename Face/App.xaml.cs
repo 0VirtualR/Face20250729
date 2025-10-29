@@ -66,6 +66,7 @@ namespace Face
             containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>();
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
             containerRegistry.RegisterForNavigation<FaceView, FaceViewModel>();
+            containerRegistry.RegisterForNavigation<CameraView, CameraViewModel>();
         }
         protected override void OnInitialized()
         {

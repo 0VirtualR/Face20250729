@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Events;
+using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,12 @@ using System.Threading.Tasks;
 
 namespace Face.ViewModels
 {
-    public class NavigateViewModel : BindableBase, INavigationAware
+    public class NavigateViewModel : ViewModelBase, INavigationAware
     {
+        public NavigateViewModel(IRegionManager regionManager, IEventAggregator aggregator) : base(regionManager, aggregator)
+        {
+        }
+
         public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;

@@ -1,4 +1,6 @@
 ﻿using Face.Common;
+using Face.Events;
+using Prism.Events;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -19,5 +21,22 @@ namespace Face.Extensions
             var dialogResult = await dialogHost.ShowDialog("MsgView", param, dialogHostName);
             return dialogResult;
         }
+
+        public static void RegisterMessage(this IEventAggregator aggregator,Action<MessageModel> action,string filterName="Main")
+        {
+            aggregator.GetEvent<MessageEvent>().Subscribe(action, ThreadOption.PublisherThread, true, (m) =>
+            {
+                return m.Filter.Equals(filterName);
+            });
+        }
+        public static void SendMessage(this IEventAggregator aggregator,string message,string filterName = "main")
+        {
+            aggregator.GetEvent<MessageEvent>().Publish(new MessageModel()
+            {
+                Filter = filterName,
+                Message = message
+            });
+        }
+
     }
 }

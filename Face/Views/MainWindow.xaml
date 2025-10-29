@@ -24,6 +24,7 @@
             <Grid.Background>
                 <ImageBrush ImageSource="/Image/背景.png"/>
             </Grid.Background>
+            <materialDesign:Snackbar Grid.RowSpan="1" x:Name="Snackbar" Panel.ZIndex="1" MessageQueue="{materialDesign:MessageQueue}" />
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

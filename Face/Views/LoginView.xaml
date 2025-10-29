@@ -9,14 +9,14 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="770" d:DesignWidth="1920">
-  
+
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Command="{Binding NavigateCommand}" CommandParameter="IndexView" Content="返回" Background="Red" Width="100"  FontSize="18" Height="46" Margin="0,0,37,0"  HorizontalAlignment="Right"/>
+        <Button Style="{StaticResource ReturnMainFormBtnStyle}" CommandParameter="{Binding ReturnMainViewParam}"/>
         <TextBlock Grid.Row="1" FontFamily="SourceHanSansCN-Bold" Foreground="White" FontSize="31px"  Margin="376,0,0,21" Text="输入密码"/>
         <Border Background="White" CornerRadius="10"   VerticalAlignment="Top" Width="1126" Height="599"  Grid.Row="2"  >
             <StackPanel HorizontalAlignment="Center">

@@ -2,6 +2,7 @@
 using Face.Extensions;
 using Face.Interface;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
@@ -18,41 +19,48 @@ namespace Face.ViewModels
 {
     public class FaceViewModel:NavigateViewModel
     {
-        private readonly IDialogService dialogService;
-        private readonly IRegionManager regionManager;
-        private readonly IFaceService faceService;
-        private readonly IDialogHostService dialogHost;
-        private ObservableCollection<FaceDto> faceDtos;
 
+        #region 字段属性
+       public Dictionary<string, object> ReturnMainViewParam { get; } = new Dictionary<string, object>
+        {
+            {"IsPublish",true },
+            {"IsDisplay",true }
+        };
+        private ObservableCollection<FaceDto> faceDtos;
         public ObservableCollection<FaceDto> FaceDtos
         {
-            get { return faceDtos; }
-            set { faceDtos = value; RaisePropertyChanged(); }
+            get => faceDtos;
+            set =>SetProperty(ref faceDtos, value);
         }
-        private FaceDto currentDto;
 
+        private FaceDto currentDto;
         public FaceDto CurrentDto
         {
-            get { return currentDto; }
-            set { currentDto = value;RaisePropertyChanged(); }
+            get => currentDto;
+            set =>SetProperty(ref currentDto, value);
         }
+        #endregion
+
+        #region 初始化
+        private readonly IDialogService dialogService;
+        private readonly IFaceService faceService;
+        private readonly IDialogHostService dialogHost;
         public DelegateCommand<FaceDto> EditCommand { get; private set; }
         public DelegateCommand<string> SaveDtoCommand { get; private set; }
-        public DelegateCommand<string> NavigateCommand { get; private set; }
-      public  FaceViewModel (IDialogService dialogService, IRegionManager regionManager,IFaceService faceService,IDialogHostService dialogHost)
+      public  FaceViewModel (IRegionManager regionManager,IEventAggregator aggregator, IDialogService dialogService, IFaceService faceService,IDialogHostService dialogHost):base(regionManager,aggregator)
         {
             this.dialogService = dialogService;
-            this.regionManager = regionManager;
             this.faceService = faceService;
             this.dialogHost = dialogHost;
-            NavigateCommand = new DelegateCommand<string>(Navigate);
             FaceDtos=new ObservableCollection<FaceDto> ();
             SaveDtoCommand = new DelegateCommand<string>(SaveDto);
             EditCommand = new DelegateCommand<FaceDto>(Edit);
             
         }
+        #endregion
 
-        private  void Edit(FaceDto dto)
+        #region 函数实现
+        private void Edit(FaceDto dto)
         {
             var param = new  DialogParameters();
             param.Add("Value", dto);
@@ -75,7 +83,6 @@ namespace Face.ViewModels
                 }
             });
         }
-
         private void SaveDto(string obj)
         {
             switch (obj)
@@ -84,12 +91,9 @@ namespace Face.ViewModels
                 case "更新":Update();break;
             }
         }
-    
         private void Update()
         {
-            throw new NotImplementedException();
         }
-
         private void Add()
         {
             var param = new DialogParameters();
@@ -115,33 +119,22 @@ namespace Face.ViewModels
                 }
             });
         }
-
-        private void Navigate(string obj)
+        public async override void OnNavigatedTo(NavigationContext navigationContext)
         {
-            regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate(obj);
-        }
-        public override void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            base.OnNavigatedTo(navigationContext);
-
-            GetFaceDtoData();
-        }
-
-        async private void GetFaceDtoData()
-        {
-            var faceinfos =await faceService.GetAllAsync(new QueryParameter()
+            var faceinfos = await faceService.GetAllAsync(new QueryParameter()
             {
-                PageSize= 11,
-                PageIndex=1
+                PageSize = 11,
+                PageIndex = 1
             });
             if (faceinfos.Status)
             {
                 FaceDtos.Clear();
-                foreach(var item in faceinfos.Result.Items)
+                foreach (var item in faceinfos.Result.Items)
                 {
                     FaceDtos.Add(item);
                 }
             }
         }
+        #endregion
     }
 }

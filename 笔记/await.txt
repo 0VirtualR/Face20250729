@@ -1,3 +1,38 @@
+ ICommand命令的原理是：
+当用户点击按钮时，WPF 数据绑定系统会通过按钮的 DataContext（通常继承自其父容器）找到 ViewModel 中对应的命令属性，然后直接触发该命令的 Execute 方法，整个过程基于数据绑定而非命令路由。
+
+INotifyPropertyChanged 的原理是：
+当在XAML中绑定ViewModel属性时，WPF绑定系统会建立属性与UI元素之间的关联。当ViewModel中属性值改变并通过PropertyChanged事件通知时，
+绑定系统会收到通知，根据属性名找到所有相关的绑定，然后让对应的UI元素重新读取属性值并更新显示。（检查属性是否一致在订阅的事件PropertyChanged 的函数OnPropertyChanged里面）
+
+
+所以抽象类就是一个有abstract关键字定义，不能被实例化，抽象成员不能是private 或 sealed的类。有抽象方法，虚方法和普通方法。抽象方法必须在子类中实现，虚方法可以选择性的重写。
+目的是用来定义对象是什么（身份），提供核心功能的部分实现，强调代码复用。只能内单继承。
+接口是使用 interface 关键字声明，定义对象能做什么（行为/能力），强调解耦和多态，不能被实例化，不能包含实例字段，可以多个继承
+
+抽象类其实就是某一类对象的核心功能的部分实现，强调的是代码的复用，只能单继承。而接口则是某一种行为，功能的抽象，强调的是解耦和多态，可以多个继承。
+
+
+1. 编程范式（Programming Paradigm）
+👉 简单说：一种写代码的“哲学”或“方法论”
+
+就像不同的“武功流派”，每种流派有自己独特的招式理念：
+
+OOP（面向对象）：把代码看作互相交互的“对象”（如“订单对象”“用户对象”）
+
+AOP（面向切面）：把日志/权限等横跨多个模块的功能像切蛋糕一样单独抽离
+
+函数式编程：把计算视为数学函数，避免修改变量（如 list.Select(x => x*2)）
+
+2. 编程模型（Programming Model）
+👉 简单说：某种范式在具体语言中的实现方式
+
+例如：
+
+OOP 在 C# 中：class、interface、inheritance（继承）
+
+AOP 在 C# 中：用 PostSharp 属性标签 或 Castle.DynamicProxy 动态代理
+
 Lambda 表达式是一种简洁的、用于创建匿名函数的语法。它可以用来代替繁琐的匿名方法或委托定义。
 扩展用途：他们允许Lambda表达式在特定的上下文中（即被赋值给 Expression<T> 类型时）被编译成表达式树。
 
@@ -52,30 +87,6 @@ MVVM：MVVM是一种分离UI逻辑和后台业务逻辑而设计的软件架构�
 
 Prism的EventAggregator本质是​​支持一对多通信的观察者模式实现​​。你的“一对一”感受源于当前使用场景的订阅者数量，而非框架限制。
 通过增加订阅者或跨模块设计，即可体现其“一对多”能力。
-
-你的疑问源于对​​发布/订阅模式​​中“一对多”通信的误解。实际上，Prism的EventAggregator确实支持一对多通信，但需要明确其实现机制与观察角度的差异。以下是具体分析：
-
-​​1. 为什么你会觉得是“一对一”？​​
-•
-​​单一订阅场景​​：若你的代码中仅有一个订阅者（如一个ViewModel订阅了事件），此时确实表现为“一对一”通信。但这只是使用方式的特例，而非机制限制。
-
-•
-​​委托触发逻辑​​：每个订阅者会独立触发其注册的委托方法，若只有一个订阅者，自然只触发一次。但若有多个订阅者，事件会依次通知所有订阅者，即“一对多”。
-
-​​2. EventAggregator如何实现“一对多”？​​
-•
-​​多订阅者支持​​：同一个事件（如PubSubEvent<string>）可以被​​多个模块或组件订阅​​。当事件发布时，​​所有订阅者都会收到通知​​。例如：
-
-// 模块A订阅
-eventAggregator.GetEvent<MessageEvent>().Subscribe(HandleMessageA);
-// 模块B订阅
-eventAggregator.GetEvent<MessageEvent>().Subscribe(HandleMessageB);
-// 发布事件时，HandleMessageA和HandleMessageB都会被调用
-eventAggregator.GetEvent<MessageEvent>().Publish("Hello");
-此时，一个发布操作触发了两个订阅者的处理逻辑，即“一对多”。
-
-•
-​​跨模块通信​​：不同模块（如订单模块和库存模块）可同时订阅“订单创建”事件，实现业务逻辑的并行响应。
 
 1. 观察者模式 (Observer Pattern)
 定义：

@@ -11,48 +11,20 @@ using System.Threading.Tasks;
 
 namespace Face.ViewModels
 {
-  public class IndexViewModel
+  public class IndexViewModel:ViewModelBase
     {
-        private readonly IRegionManager regionManager;
-        private readonly IEventAggregator aggregator;
-
-        public DelegateCommand<string> NavigateCommand { get;private set; }
-        public IndexViewModel(IRegionManager regionManager,IEventAggregator aggregator)
+        public IndexViewModel(IRegionManager regionManager,IEventAggregator aggregator):base(regionManager,aggregator)
         {
-            NavigateCommand = new DelegateCommand<string>(Navigate);
- 
-            this.regionManager = regionManager;
-            this.aggregator = aggregator;
         }
-
-        private void Navigate(string viewname)
+        public Dictionary<string, object> ToLoginParam { get; } = new Dictionary<string, object>
         {
-            try
-            {
-                regionManager.Regions[PrismManager.MainWindowRegionName].RequestNavigate(viewname, NavigateResult =>
-                {
-                    if (NavigateResult.Result == true)
-                    {
-                        if (viewname == "LoginView")
-                        {
-                            aggregator.PublishMainWindowEvent(new Events.DisplayImg()
-                            {
-                                IsDisplay = false
-                            });
-                        }
-
-                    }
-                    else
-                    {
-                        string s = NavigateResult.Error?.Message;
-                        string ss = NavigateResult.Error.ToString();
-                    }
-                });
-            }
-        catch(Exception ex)
-            {
-                
-            }
-        }
+            {"ViewName","LoginView" },
+            {"IsPublish",true }
+        };
+        public Dictionary<string, object> ToCameraParam { get; } = new Dictionary<string, object>
+        {
+            {"ViewName","CameraView" }
+        };
+     
     }
 }
