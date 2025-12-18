@@ -1,0 +1,13 @@
+E:\MyToDo\Face20250729\Shared\bin\Debug\net6.0-windows\Shared.deps.json
+E:\MyToDo\Face20250729\Shared\bin\Debug\net6.0-windows\Shared.dll
+E:\MyToDo\Face20250729\Shared\bin\Debug\net6.0-windows\Shared.pdb
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\Shared.csproj.AssemblyReference.cache
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\Shared.AssemblyInfoInputs.cache
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\Shared.AssemblyInfo.cs
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\Shared.csproj.CoreCompileInputs.cache
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\Shared.sourcelink.json
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\Shared.dll
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\refint\Shared.dll
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\Shared.pdb
+E:\MyToDo\Face20250729\Shared\obj\Debug\net6.0-windows\ref\Shared.dll

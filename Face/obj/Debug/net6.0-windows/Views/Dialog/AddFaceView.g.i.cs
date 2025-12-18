@@ -56,7 +56,7 @@ namespace Face.Views.Dialog {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Face;component/views/dialog/addfaceview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Face;V1.0.0.0;component/views/dialog/addfaceview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Dialog\AddFaceView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

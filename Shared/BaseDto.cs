@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Shared
 {
-    public class BaseDto : INotifyPropertyChanged
+    public class BaseDto :BindableBase,INotifyPropertyChanged
     {
         public int Id { get; set; }
         public event PropertyChangedEventHandler? PropertyChanged;

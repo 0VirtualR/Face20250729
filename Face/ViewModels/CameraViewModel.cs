@@ -1,15 +1,20 @@
-﻿using OpenCvSharp;
+﻿using Face.Common.SerialPorts;
+using OpenCvSharp;
 using OpenCvSharp.WpfExtensions;
+using Prism;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -17,9 +22,77 @@ using System.Windows.Threading;
 
 namespace Face.ViewModels
 {
-    public class CameraViewModel : ViewModelBase,IDisposable
+    public class CameraViewModel : ViewModelBase,IDisposable,IActiveAware
     {
+
+        #region 酒测流程部分 procedure
+
+
+        private int _selectPageIndex;
+        public int SelectPageIndex
+        {
+            get => _selectPageIndex;
+            set => SetProperty(ref _selectPageIndex, value);
+        }
+        #endregion
+
+        #region IActiveAware 接口实现
+        private bool _isActive;
+
+        public event EventHandler IsActiveChanged;
+
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set
+            {
+                if (_isActive != value)
+                {
+                    _isActive = value;
+                    OnIsActiveChanged();
+                }
+            }
+        }
+        private void OnIsActiveChanged()
+        {  
+            //切换为抓拍界面
+                    SelectPageIndex = 0;
+            if (IsActive)
+            {
+                //serialPortService.Open();
+                // 激活时打开串口并启动定时器
+                if (serialPortService.IsOpen)
+                {
+                    _portTimer.Start();
+
+                    //视频打开
+                    _frameTimer?.Start();
+                   
+                    //serialPortService.DataReceived += OnProcessData;
+
+                }
+            }
+            else
+            {
+                // 失活时停止定时器并关闭串口
+                //_portTimer.Stop();
+
+
+                _frameTimer?.Stop();
+
+                //serialPortService.DataReceived -= OnProcessData;
+
+                //serialPortService.Close();
+            }
+
+            IsActiveChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+
+        #endregion
+
         #region 属性字段
+        private readonly System.Timers.Timer _portTimer;
         public ObservableCollection<int> AvailableCameras { get; } =new ObservableCollection<int>();
         public Dictionary<string, object> ReturnMainViewParam { get; } = new Dictionary<string, object>
         {
@@ -71,15 +144,118 @@ namespace Face.ViewModels
 
         #region 初始化
 
-        public CameraViewModel(IRegionManager regionManager, IEventAggregator aggregator) : base(regionManager, aggregator)
+        public CameraViewModel(IRegionManager regionManager, IEventAggregator aggregator,ISerialPortService serialPortService) : base(regionManager, aggregator)
+        {
+            InitCamera();
+            this.serialPortService = serialPortService;
+            serialPortService.Open();
+            serialPortService.DataReceived += OnProcessData;
+            //定时往酒精串口发送数据
+            _portTimer = new System.Timers.Timer();
+            _portTimer.Interval = 250; // 250ms
+            _portTimer.Elapsed += async (s, e) =>
+            {
+                    await serialPortService.SendAsync("7E013000010031");
+            };
+            //_portTimer.Start();
+
+
+
+        }
+        #endregion
+
+        #region 酒测吹气数据处理部分
+        private bool _isFirst = true;
+        private string _startTime;
+
+        private int _alcoResult;
+        public int AlcoResult
+        {
+            get => _alcoResult;
+            set => SetProperty(ref _alcoResult, value);
+        }
+
+        private void OnProcessData(string obj)
+        {
+            Application.Current.Dispatcher.Invoke(()=>ProcessData(obj));
+        }
+
+        private void ProcessData(string data)
+        {
+            if (string.IsNullOrEmpty(data) || data.Length <= 15)
+                return;
+
+            // 这里是你原来的业务逻辑
+            switch (data)
+            {
+                case "7e01320002010035":
+                    StatusMessage = "等待测试";
+                    break;
+                case "7e01320002030037":
+                    StatusMessage = "允许吹气";
+                  
+                    break;
+                case "7e01320002030138":
+                    StatusMessage = "正在吹气";
+                    if (_isFirst)
+                    {
+                        _isFirst = false;
+                        _startTime = DateTime.Now.ToString("HH:mm:ss:fff");
+                     
+                    }
+                    break;
+                case "7e01320002040038":
+                    StatusMessage = "吹气成功";
+                    break;
+                case "7e01320002020036":
+                    StatusMessage = "测试失败";
+                    break;
+            }
+
+            if (data.StartsWith("7e01340002"))
+            {
+                ProcessTestResult(data);
+            }
+        }
+        private void ProcessTestResult(string data)
+        {
+            
+            _isFirst = true;
+
+
+            // 解析结果（和你原来的逻辑一样）
+            string str1 = data.Substring(10, 2);
+            string str2 = data.Substring(12, 2);
+            str1 = Convert.ToInt32(str1, 16).ToString();
+            str2 = Convert.ToInt32(str2, 16).ToString();
+
+            if (str1 != "0")
+            {
+                AlcoResult = int.Parse(str1) + int.Parse(str2);
+            }
+            StatusMessage = "测试完成";
+            SelectPageIndex = 1;
+            // 触发后续操作
+            //TriggerPhotoCapture();
+
+            // 失活时停止定时器并关闭串口
+            _portTimer.Stop();
+        }
+        #endregion
+
+      
+
+        #region 函数实现
+
+        private void InitCamera()
         {
             AvailableCameras.Clear();
             StatusMessage = "正在检测摄像头...";
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 try
                 {
-                    using(var testCamera=new VideoCapture(i))
+                    using (var testCamera = new VideoCapture(i))
                     {
                         if (testCamera.IsOpened())
                         {
@@ -97,9 +273,6 @@ namespace Face.ViewModels
             //打开摄像头
             StartCamera();
         }
-        #endregion
-
-        #region 函数实现
         private void StartCamera()
         {
             try
@@ -142,12 +315,13 @@ namespace Face.ViewModels
                 Interval = TimeSpan.FromMilliseconds(1000.0 / FrameRate)
             };
             _frameTimer.Tick += OnFrameTimerTick;
-            _frameTimer.Start();
+            //_frameTimer.Start();
 
         }
 
         private void OnFrameTimerTick(object sender, EventArgs e)
         {
+           
             if (_camera == null || !_camera.IsOpened() || _frame == null 
                 || !_camera.Read(_frame) || _frame.Empty()) return;
 
@@ -177,6 +351,9 @@ namespace Face.ViewModels
         private Mat _capturedImage;
         private BitmapSource _capturedImage2;
         private WriteableBitmap _capturedWriteableBitmap;
+        private readonly ISerialPortService serialPortService;
+
+
         private void CaptureImage()
         {
             if (_frame == null || _frame.Empty()) return;
@@ -202,7 +379,10 @@ namespace Face.ViewModels
 
             _frame?.Dispose();
             _frame = null;
+
+            _portTimer?.Stop();
         }
+
         #endregion
     }
 }

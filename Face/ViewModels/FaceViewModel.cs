@@ -10,6 +10,7 @@ using Shared;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -26,13 +27,14 @@ namespace Face.ViewModels
             {"IsPublish",true },
             {"IsDisplay",true }
         };
+
         private ObservableCollection<FaceDto> faceDtos;
         public ObservableCollection<FaceDto> FaceDtos
         {
             get => faceDtos;
-            set =>SetProperty(ref faceDtos, value);
+            set => SetProperty(ref faceDtos, value);
         }
-
+      
         private FaceDto currentDto;
         public FaceDto CurrentDto
         {
@@ -55,11 +57,36 @@ namespace Face.ViewModels
             FaceDtos=new ObservableCollection<FaceDto> ();
             SaveDtoCommand = new DelegateCommand<string>(SaveDto);
             EditCommand = new DelegateCommand<FaceDto>(Edit);
+
+            ToggleSelectAllCommand = new DelegateCommand(ToggleSelectAll);
             
         }
         #endregion
 
+
+        #region 人员信息的datagrid所需的函数
+        //全选和取消全选的表头操作实现函数
+        // 计算属性：是否所有行都被选中
+
+        public DelegateCommand ToggleSelectAllCommand { get; private set; }
+        public void ToggleSelectAll()
+        {
+            if (FaceDtos == null || FaceDtos.Count == 0) return;
+
+            // 检查是否已经全选
+            bool allSelected = FaceDtos.All(item => item.isSelected);
+
+            // 切换选择状态
+            bool newState = !allSelected;
+            foreach (var item in FaceDtos)
+            {
+                item.isSelected = newState;
+            }
+        }
+        #endregion
+
         #region 函数实现
+
         private void Edit(FaceDto dto)
         {
             var param = new  DialogParameters();
@@ -74,10 +101,10 @@ namespace Face.ViewModels
                     {
                         //更新成功
                         var old = FaceDtos.FirstOrDefault(x=>x.Id.Equals(resface.Id));
-                        old.Sex = resdb.Result.Sex;
-                        old.WorkName = resdb.Result.WorkName;
-                        old.WorkId = resdb.Result.WorkId;
-                        old.Name = resdb.Result.Name;
+                        old.sex = resdb.Result.sex;
+                        old.workName = resdb.Result.workName;
+                        old.workId = resdb.Result.workId;
+                        old.name = resdb.Result.name;
                        await dialogHost.Question("温馨提示", "更新成功");
                     }
                 }

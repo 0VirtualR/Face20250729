@@ -15,11 +15,11 @@ using System.Threading.Tasks;
 
 namespace Face.ViewModels
 {
-   public class LoginViewModel:ViewModelBase
+    public class LoginViewModel : ViewModelBase
     {
-       
+
         #region 字段属性
-        public Dictionary<string, object> ReturnMainViewParam { get; } = new Dictionary<string, object>
+        public Dictionary<string, object> ReturnMainViewParam { get; set; } = new Dictionary<string, object>
         {
             {"IsPublish",true },
             {"IsDisplay",true }
@@ -28,28 +28,27 @@ namespace Face.ViewModels
         public string Username
         {
             get => username;
-            set =>SetProperty(ref username,value);
+            set => SetProperty(ref username, value);
         }
         private string password;
         public string Password
         {
             get => password;
-			set =>SetProperty(ref  password,value);
-		}
+            set => SetProperty(ref password, value);
+        }
         #endregion
 
         #region 初始化部分
         private readonly ILoginService loginService;
-        public DelegateCommand<string> ExecuteCommand { get;}
-	public	LoginViewModel(IRegionManager regionManager,IEventAggregator aggregator,ILoginService loginService):base(regionManager,aggregator)
-		{
+        public DelegateCommand<string> ExecuteCommand { get; }
+        public LoginViewModel(IRegionManager regionManager, IEventAggregator aggregator, ILoginService loginService) : base(regionManager, aggregator)
+        {
             this.loginService = loginService;
             //ExecuteCommand = new DelegateCommand<string>(Execute);
-            ExecuteCommand = new DelegateCommand<string>(async (param)=>await ExecuteAsync(param));
+            ExecuteCommand = new DelegateCommand<string>(async (param) => await ExecuteAsync(param));
         }
         #endregion
 
-        #region 函数部分
 
         private async Task ExecuteAsync(string obj)
         {
@@ -67,9 +66,12 @@ namespace Face.ViewModels
             var res = await loginService.Login(Username, Password);
             if (res != null && res.Status)
             {
-                Navigate("FaceView");
+               Dictionary<string,object> ss = new Dictionary<string, object>
+        {
+           {"ViewName","FaceView" }
+        };
+                Navigate(ss);
             }
         }
-        #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,11 +25,27 @@ namespace Face.Views
         public CameraView()
         {
             InitializeComponent();
-            this.Loaded += (s, e) => StartScanAnimation();
+            this.Loaded += (s, e) => Onload();
+            this.Unloaded += OnUnload;
         }
-        // 启动扫描动画
-        private void StartScanAnimation()
+
+        private void OnUnload(object sender, RoutedEventArgs e)
         {
+           if (DataContext is IActiveAware activeAware)
+            {
+                activeAware.IsActive = false;
+            }
+        }
+
+        // 启动扫描动画
+        private void Onload()
+        {
+            if(DataContext is IActiveAware activeAware)
+            {
+                activeAware.IsActive = true;
+            }
+
+            //扫描的动画开始的位置
             line2.RenderTransform.BeginAnimation(TranslateTransform.YProperty, null);
 
             // 重置位置

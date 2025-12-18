@@ -41,7 +41,7 @@ namespace Face.ViewModels.Dialog
 
         private  void Save()
         {
-            if (string.IsNullOrWhiteSpace(CurrentDto.Name) || string.IsNullOrWhiteSpace(CurrentDto.WorkName) || string.IsNullOrWhiteSpace(CurrentDto.WorkId)) return;
+            if (string.IsNullOrWhiteSpace(CurrentDto.name) || string.IsNullOrWhiteSpace(CurrentDto.workName) || string.IsNullOrWhiteSpace(CurrentDto.workId)) return;
             var param = new DialogParameters();
             param.Add("Value", CurrentDto);
             RequestClose?.Invoke(new DialogResult(ButtonResult.OK,param));
@@ -70,10 +70,10 @@ namespace Face.ViewModels.Dialog
             {
 
                 var res = parameters.GetValue<FaceDto>("Value");
-                CurrentDto.WorkId = res.WorkId;
-                CurrentDto.WorkName = res.WorkName;
-                CurrentDto.Name = res.Name;
-                CurrentDto.Sex = res.Sex;
+                CurrentDto.workId = res.workId;
+                CurrentDto.workName = res.workName;
+                CurrentDto.name = res.name;
+                CurrentDto.sex = res.sex;
                 CurrentDto.Id = res.Id;
 
             }

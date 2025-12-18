@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Face.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="770" d:DesignWidth="1920">
     <UserControl.Resources>
@@ -21,94 +22,111 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Style="{StaticResource ReturnMainFormBtnStyle}"/>
-        <Grid  Grid.Row="1" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <materialDesign:Transitioner  Grid.Row="1"  SelectedIndex="{Binding SelectPageIndex, FallbackValue=1}">
+            <materialDesign:TransitionerSlide>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Canvas Margin="361,0,0,0" HorizontalAlignment="Left" Width="573" Height="573">
+                        <!-- 原来的Border -->
+                        <Border CornerRadius="5" Background="Gray" Width="573" Height="573">
+                            <Grid>
+                                <Grid.Clip>
+                                    <RectangleGeometry Rect="0,0,573,573"/>
+                                </Grid.Clip>
+                                <Image Source="{Binding CameraImage}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                <!-- 第一条扫描线 -->
+                                <Rectangle Height="573">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="Transparent" Offset="0"/>
+                                            <GradientStop Color="#5800FF00" Offset="1"/>
+                                            <GradientStop Color="Transparent" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                    <Rectangle.RenderTransform>
+                                        <TranslateTransform Y="-573"/>
+                                    </Rectangle.RenderTransform>
+                                    <Rectangle.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                          Storyboard.TargetProperty="(Rectangle.RenderTransform).(TranslateTransform.Y)"
+                          From="-573" To="573"
+                          Duration="0:0:6"
+                          RepeatBehavior="Forever"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Rectangle.Triggers>
+                                </Rectangle>
+
+                                <!-- 第二条扫描线 -->
+                                <Rectangle Height="573" x:Name="line2">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="Transparent" Offset="0"/>
+                                            <GradientStop Color="#5800FF00" Offset="1"/>
+                                            <GradientStop Color="Transparent" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                    <Rectangle.RenderTransform>
+                                        <TranslateTransform Y="-573"/>
+                                    </Rectangle.RenderTransform>
+                                    <Rectangle.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                          Storyboard.TargetProperty="(Rectangle.RenderTransform).(TranslateTransform.Y)"
+                          From="-573" To="573"
+                          Duration="0:0:6"
+                          BeginTime="0:0:3"
+                          RepeatBehavior="Forever"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Rectangle.Triggers>
+                                </Rectangle>
 
 
 
-            <Canvas Margin="361,0,0,0" HorizontalAlignment="Left" Width="573" Height="573">
-                <!-- 原来的Border -->
-                <Border CornerRadius="5" Background="Gray" Width="573" Height="573">
-                    <Grid>
-                        <Grid.Clip>
-                            <RectangleGeometry Rect="0,0,573,573"/>
-                        </Grid.Clip>
-                        <Image Source="{Binding CameraImage}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <!-- 左右竖线 -->
+                                <Line X1="400" Y1="0" X2="400" Y2="573" Stroke="White" StrokeThickness="1" Opacity="0.7"/>
+                                <Line X1="200" Y1="0" X2="200" Y2="573" Stroke="White" StrokeThickness="1" Opacity="0.7"/>
+                            </Grid>
+                        </Border>
 
-                        <!-- 第一条扫描线 -->
-                        <Rectangle Height="573">
-                            <Rectangle.Fill>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="Transparent" Offset="0"/>
-                                    <GradientStop Color="#5800FF00" Offset="1"/>
-                                    <GradientStop Color="Transparent" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                            <Rectangle.RenderTransform>
-                                <TranslateTransform Y="-573"/>
-                            </Rectangle.RenderTransform>
-                            <Rectangle.Triggers>
-                                <EventTrigger RoutedEvent="Loaded">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation
-                                Storyboard.TargetProperty="(Rectangle.RenderTransform).(TranslateTransform.Y)"
-                                From="-573" To="573"
-                                Duration="0:0:6"
-                                RepeatBehavior="Forever"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </Rectangle.Triggers>
-                        </Rectangle>
+                        <!-- 在Canvas上添加四个直角 -->
+                        <Path Stroke="LightGreen" StrokeThickness="3" 
+    Data="M-5,-5 L15,-5 M-5,-5 L-5,15 M578,-5 L558,-5 M578,-5 L578,15 M-5,578 L15,578 M-5,578 L-5,558 M578,578 L558,578 M578,578 L578,558"/>
+                    </Canvas>
 
-                        <!-- 第二条扫描线 -->
-                        <Rectangle Height="573" x:Name="line2">
-                            <Rectangle.Fill>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="Transparent" Offset="0"/>
-                                    <GradientStop Color="#5800FF00" Offset="1"/>
-                                    <GradientStop Color="Transparent" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                            <Rectangle.RenderTransform>
-                                <TranslateTransform Y="-573"/>
-                            </Rectangle.RenderTransform>
-                            <Rectangle.Triggers>
-                                <EventTrigger RoutedEvent="Loaded">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation
-                                Storyboard.TargetProperty="(Rectangle.RenderTransform).(TranslateTransform.Y)"
-                                From="-573" To="573"
-                                Duration="0:0:6"
-                                BeginTime="0:0:3"
-                                RepeatBehavior="Forever"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </Rectangle.Triggers>
-                        </Rectangle>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding StatusMessage}" FontSize="33"/>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide>
+                <Grid>
+                    <!-- 单列，让图片有足够空间 -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <Image Source="/Image/形状 15 拷贝(1).png" 
+               Margin="300,33" 
+               HorizontalAlignment="Left" 
+               Width="355" 
+               Height="429"/>
+                </Grid>
+            </materialDesign:TransitionerSlide>
 
+        </materialDesign:Transitioner>
 
-                        <!-- 左右竖线 -->
-                        <Line X1="400" Y1="0" X2="400" Y2="573" Stroke="White" StrokeThickness="1" Opacity="0.7"/>
-                        <Line X1="200" Y1="0" X2="200" Y2="573" Stroke="White" StrokeThickness="1" Opacity="0.7"/>
-                    </Grid>
-                </Border>
-
-                <!-- 在Canvas上添加四个直角 -->
-                <Path Stroke="LightGreen" StrokeThickness="3" 
-          Data="M-5,-5 L15,-5 M-5,-5 L-5,15 M578,-5 L558,-5 M578,-5 L578,15 M-5,578 L15,578 M-5,578 L-5,558 M578,578 L558,578 M578,578 L578,558"/>
-            </Canvas>
-
-            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding StatusMessage}" FontSize="33"/>
-            </StackPanel>
-        </Grid>
     </Grid>
 </UserControl>

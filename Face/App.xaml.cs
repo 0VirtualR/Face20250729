@@ -1,6 +1,8 @@
 ﻿using Face.Common;
+using Face.Common.SerialPorts;
 using Face.Interface;
 using Face.Service;
+using Face.Tools;
 using Face.ViewModels;
 using Face.ViewModels.Dialog;
 using Face.Views;
@@ -54,6 +56,20 @@ namespace Face
 
                 return client;
             });
+            containerRegistry.RegisterSingleton<ISerialPortDetector,SerialPortDetector>();
+            containerRegistry.RegisterSingleton<ISerialPortService, SerialPortService>();
+            //SerialPortDetector detector = new SerialPortDetector();
+            //string alcoholPort = detector.DetectAlcoholPort();
+            //containerRegistry.RegisterSingleton<ISerialPortService>(container =>
+            //{
+            //    var detector=container.Resolve<ISerialPortDetector>();
+            //    string alcoholPort=detector.DetectAlcoholPort();
+            //    if (!string.IsNullOrEmpty(alcoholPort))
+            //    {
+            //        return new SerialPortService(alcoholPort,115200);
+            //    }
+            //    return null;
+            //});
 
             containerRegistry.RegisterDialog<AddFaceView, AddFaceViewModel>();
 

@@ -4,12 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:local="clr-namespace:Face.Views"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
            d:DesignHeight="870" d:DesignWidth="1920">
     <UserControl.Resources>
         <ResourceDictionary>
-            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/UserInfoTableStyleResourceDictory.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
             <Style x:Key="localBtn"  TargetType="Button">
                 <Setter Property="Margin" Value="15,10"/>
                 <Setter Property="Foreground" Value="White"/>
@@ -114,122 +118,88 @@
                         </TextBox>
 
                         <!-- 搜索按钮 -->
-                        <Button Command="{Binding SearchCommand}"
+                        <!--<Button Command="{Binding SearchCommand}"
         HorizontalAlignment="Right"
         Style="{StaticResource MaterialDesignIconButton}"
         Foreground="#2196F3" 
         Margin="0,0,10,0">
                             <materialDesign:PackIcon Kind="Magnify" Width="33" Height="33"/>
-                        </Button>
+                        </Button>-->
                     </Grid>
                     <Button Content="删除" Background="Red" Padding="20" DockPanel.Dock="Right" Style="{StaticResource localBtn}"/>
                     <Button Content="导入人员" Background="#F56E25" Style="{StaticResource localBtn}"  DockPanel.Dock="Right" />
                     <Button Content="导出人员" Background="#0177D5 " Style="{StaticResource localBtn}" DockPanel.Dock="Right"/>
                 </DockPanel>
-                <DataGrid ItemsSource="{Binding FaceDtos}" 
-          AutoGenerateColumns="False"
-          Grid.Row="1"
-          Margin="20,10" ClipToBounds="True"
-                          VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"
-          CanUserAddRows="False"
-    CanUserDeleteRows="False"
-    CanUserReorderColumns="True"
-    CanUserResizeColumns="True"
-    CanUserResizeRows="False"
-    CanUserSortColumns="True"
-    SelectionMode="Extended"
-    SelectionUnit="FullRow"
-          IsReadOnly="True"
-          AlternatingRowBackground="#FFF5F5F5"
-          RowBackground="White"
-          GridLinesVisibility="None"
-          HeadersVisibility="Column"
-          FontSize="14"
-          HorizontalGridLinesBrush="#FFE0E0E0"
-          VerticalGridLinesBrush="#FFE0E0E0"
-                        
-          ColumnWidth="*">
-  
+
+                <!--Members Data Grid-->
+                <DataGrid AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding FaceDtos}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="UserDataGrid"  Style="{DynamicResource DataGridStyle1}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto" MinWidth="50"/>
-                        <DataGridTextColumn Header="姓名" Binding="{Binding Name}" Width="*" MinWidth="100"/>
-                        <DataGridTextColumn Header="性别" Binding="{Binding Sex}" Width="Auto" MinWidth="60"/>
-                        <DataGridTextColumn Header="工号" Binding="{Binding WorkId}" Width="Auto" MinWidth="80"/>
-                        <DataGridTextColumn Header="工作" Binding="{Binding WorkName}" Width="*" MinWidth="120"/>
-                        <DataGridTextColumn Header="创建时间" Binding="{Binding CreateDate, StringFormat=yyyy-MM-dd HH:mm}" Width="Auto" MinWidth="150"/>
-                        <DataGridTemplateColumn Width="120" IsReadOnly="True">
+                        <DataGridTemplateColumn CanUserResize="False" Width="auto">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="全选" Cursor="Hand" HorizontalAlignment="Center">
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.ToggleSelectAllCommand,RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate> 
+                                <DataTemplate>
+                                    <CheckBox Style="{StaticResource CheckBoxStyle1}" IsChecked="{Binding isSelected,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >
+                                       
+                                    </CheckBox>
+                                    
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="ID" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Id}"/>
+                      
+                        <DataGridTextColumn Header="性别" Binding="{Binding sex}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="工号" Binding="{Binding workName}" IsReadOnly="True" Width="*"/>
+                     
+                        <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <!-- 编辑按钮 -->
-                                        <Button Content="编辑" 
-                            Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                            CommandParameter="{Binding}"
-                            Margin="2" Padding="5 2"
-                            Style="{StaticResource MaterialDesignFlatButton}"/>
-
-                                        <!-- 删除按钮 -->
-                                        <Button Content="删除" 
-                            Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                            CommandParameter="{Binding}"
-                            Margin="2" Padding="5 2"
-                            Style="{StaticResource MaterialDesignFlatButton}"/>
+                                        <Button Style="{StaticResource gridEditButton}">
+                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        </Button>
+                                        <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                            <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
-
-                    <DataGrid.RowStyle>
-                        <Style TargetType="DataGridRow">
-                            <Setter Property="Height" Value="Auto"/>
-                            <Setter Property="VerticalContentAlignment" Value="Center"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#FFE3F2FD"/>
-                                </Trigger>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="#FFBBDEFB"/>
-                                    <Setter Property="BorderBrush" Value="#FF90CAF9"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.RowStyle>
-
-                    <DataGrid.ColumnHeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="Height" Value="40"/>
-                            <Setter Property="Background" Value="#FF2196F3"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="FontWeight" Value="SemiBold"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                            <Setter Property="BorderBrush" Value="#FF1976D2"/>
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
                 </DataGrid>
-                <StackPanel Margin="10" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <!-- 上一页按钮 -->
-                    <Button x:Name="BtnPrev" Content="&lt;" Style="{StaticResource PageButtonStyle}" IsEnabled="False"/>
 
-                    <!-- 页码按钮（动态生成） -->
-                    <Button Content="1" Style="{StaticResource ActivePageButtonStyle}"/>
-                    <Button Content="2" Style="{StaticResource PageButtonStyle}"/>
-                    <Button Content="3" Style="{StaticResource PageButtonStyle}"/>
-                    <TextBlock Text="..." VerticalAlignment="Center" Margin="5,0"/>
-                    <Button Content="20" Style="{StaticResource PageButtonStyle}"/>
+                <!--Pagingation Section-->
+                <Border Grid.Row="2" HorizontalAlignment="Right" BorderBrush="#DEE4EC" BorderThickness="1" CornerRadius="5" Padding="5" Background="#ffffff" Margin="0 10 10 10">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource pagingButton}">
+                            <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
+                        </Button>
+                        <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
 
-                    <!-- 下一页按钮 -->
-                    <Button x:Name="BtnNext" Content="&gt;" Style="{StaticResource PageButtonStyle}"/>
+                        <Button Style="{StaticResource pagingButton}" Content="1"/>
+                        <Button Style="{StaticResource pagingButton}" Content="2" Background="#7950F2" Foreground="#ffffff"/>
+                        <Button Style="{StaticResource pagingButton}" Content="3"/>
 
-                    <!-- 总页数和跳转输入框 -->
-                    <TextBlock Text="共20页" VerticalAlignment="Center" Margin="10,0,5,0"/>
-                    <TextBlock Text="到" VerticalAlignment="Center" Margin="5,0"/>
-                    <TextBox x:Name="TxtPage" Width="50" VerticalAlignment="Center">
-                       
-                    </TextBox>
-                    <TextBlock Text="页" VerticalAlignment="Center" Margin="5,0"/>
-                </StackPanel>
+                        <TextBlock Text="..." Foreground="#6C7682" VerticalAlignment="Center" Margin="10 0" FontSize="15"/>
+
+                        <Button Style="{StaticResource pagingButton}" Content="7"/>
+                        <Button Style="{StaticResource pagingButton}" Content="8"/>
+                        <Button Style="{StaticResource pagingButton}" Content="9"/>
+
+                        <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
+                        <Button Style="{StaticResource pagingButton}">
+                            <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
+                        </Button>
+                    </StackPanel>
+                </Border>
+
+
+
             </Grid>
         </Border>
     </Grid>

@@ -3,46 +3,68 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Automation;
 
 namespace Shared
 {
     public class FaceDto:BaseDto
     {
-		private string name;
 
-		public string Name
-		{
-			get { return name; }
-			set { name = value;OnPropertyChanged(); }
-		}
-		private string sex;
+		//public bool isSelected
+		//{
+		//	get => _isSelected;
+		//	set { _isSelected = value; OnPropertyChanged(); }
+		//}
 
-		public string Sex
-		{
-			get { return sex; }
-			set { sex = value; OnPropertyChanged(); }
-		}
-		private string workId;
+		//private bool _isSelected;
+		//public bool isSelected
+		//{
+		//	get => _isSelected;
+		//	set => SetProperty(ref _isSelected, value);
+		//}
 
-		public string WorkId
-		{
-			get { return workId; }
-			set { workId = value; OnPropertyChanged(); }
-		}
-		private string workName;
 
-		public string WorkName
+		private bool _isSelected;
+		public bool isSelected
 		{
-			get { return workName; }
-			set { workName = value; OnPropertyChanged(); }
+			get => _isSelected;
+			set { _isSelected = value; OnPropertyChanged(); }
 		}
-		private DateTime createDate;
 
-		public DateTime CreateDate
+		private string _name;
+		public string name
 		{
-			get { return createDate; }
-			set { createDate = value; OnPropertyChanged();}
-		}
+			get => _name;
+            set { _name = value; OnPropertyChanged(); }
+        }
+
+		private string _sex;
+		public string sex
+		{
+			get => _sex;
+            set { _sex  = value; OnPropertyChanged(); }
+        }
+
+		private string _workId;
+		public string workId
+		{
+			get => _workId;
+            set { _workId = value; OnPropertyChanged(); }
+        }
+
+		private string _workName;
+		public string workName
+		{
+			get => _workName;
+            set { _workName = value; OnPropertyChanged(); }
+        }
+
+		private DateTime _createTime;
+		public DateTime createTime
+		{
+			get => _createTime;
+            set { _createTime = value; OnPropertyChanged(); }
+        }
 
 	}
 }

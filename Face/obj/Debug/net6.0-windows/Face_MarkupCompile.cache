@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 E:\MyToDo\Face20250729\Face\App.xaml
-8-1698595215
+9555288027
 
-37510328735
-206-485528214
-Resources\ButtonStyleResourceDictory.xaml;Views\CameraView.xaml;Views\Dialog\AddFaceView.xaml;Views\Dialog\MsgView.xaml;Views\FaceView.xaml;Views\IndexView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;
+42-1075967438
+209-2044222427
+Resources\ButtonStyleResourceDictory.xaml;Resources\UserInfoTableStyleResourceDictory.xaml;Views\CameraView.xaml;Views\Dialog\AddFaceView.xaml;Views\Dialog\MsgView.xaml;Views\FaceView.xaml;Views\IndexView.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;
 
 False
 
